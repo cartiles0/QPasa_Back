@@ -1,27 +1,15 @@
-# QPasa_Back
+# QPasa-Back
 
-## CONCEPT
-A web page which offers complete and detailed information about all public events that may interest the user. Each user chooses and defines what is useful and of interest to the user.
+## DESCRIPTION
+(Description)
 
-## OBJECTIVE
-An easy, fast and useful demand aggregation platform to match users and organizers. The platform will create public events, and provide users with the information and sale of tickets for the events.
+## PROJECT SETUP
 
-## EVENT CATEGORIES
-- Concerts
-- Conferences/Workshops
-- Expo/Fairs
-- Festivals
-- For Kids
-- Gastronomy
-- Parties
-- Retreats
-- Shows
-- Sports
-- Theater/Film
+`npm install`
 
 # DB SCHEMAS
 
-## USER
+## USER - PERSON
 
 | KEY             | TYPE         | REFERENCE | REQUIRED | VALIDATION     |
 |-----------------|--------------|-----------|----------|----------------|
@@ -32,12 +20,34 @@ An easy, fast and useful demand aggregation platform to match users and organize
 | password        | string       |           | YES      |                |
 | photo           |              |           | YES      |                |
 | areaPreference  | string       |           | YES      |                |
-| address         | string       |           | YES      |                |
-| rating          | number       |           | NO       |                |
-| aboutMe         | string       |           | NO       |                |
+| dateOfBirth     | date         |           | NO       |                |
+| phone           | number       |           | NO       |                |
+| DNI             | string       |           | NO       | Maxlength      |
+| aboutMe         | string       |           | NO       | Maxlength      |
+| address         | string       |           | NO       |                |
+| reputation      | number       |           | NO       |                |
 | yourEvents      | [ ObjectId ] | Events    | NO       |                |
 | savedEvents     | [ ObjectId ] | Events    | NO       |                |
-| attendingEvents | [ ObjectId ] | Events    | NO       |                |
+| purchasedEvents | [ ObjectId ] | Events    | NO       |                |
+
+## USER - BUSINESS
+
+| KEY             | TYPE         | REFERENCE | REQUIRED | VALIDATION     |
+|-----------------|--------------|-----------|----------|----------------|
+| name            | string       |           | YES      |                |
+| CIF             | string       |           | YES      | Unique         |
+| email           | string       |           | YES      | RegExp, Unique |
+| password        | string       |           | YES      |                |
+| photo           |              |           | YES      |                |
+| phone           | number       |           | YES      |                |
+| aboutMe         | string       |           | YES      | Maxlength      |
+| address         | string       |           | YES      |                |
+| website         | string       |           | YES      |                |
+| facebookLink    | string       |           | NO       |                |
+| instagramLink   | string       |           | NO       |                |
+| twitterLink     | string       |           | NO       |                |
+| reputation      | number       |           | NO       |                |
+| yourEvents      | [ ObjectId ] | Events    | NO       |                |
 
 ## EVENTS
 
@@ -45,18 +55,25 @@ An easy, fast and useful demand aggregation platform to match users and organize
 |-------------|--------------|-----------|----------|----------------|
 | title       | string       |           | YES      |                |
 | description | string       |           | YES      |                |
+| address     | string       |           | YES      |                |
+| zipCode     | number       |           | YES      |                |
+| municipality| string       |           | YES      |                |
+| country     | string       |           | YES      |                |
+| creator     | [ ObjectId ] | Users     | NO       |                |
 | eventDate   | date         |           | YES      |                |
 | capacity    | number       |           | YES      |                |
 | price       | number       |           | YES      |                |
 | photos      |              |           | YES      |                |
-| category    | string       |           | YES      |                |
-| creator     | [ ObjectId ] | Users     | NO       |                |
-| address     | [ ObjectId ] | Users     | NO       |                |
+| ammenities  | string       |           | YES      |                |
+| public      | boolean      |           | YES      |                |
+| recourrent  | boolean      |           | YES      |                |
+| policies    | string       |           | YES      |                |
 | saved       | [ ObjectId ] | Users     | NO       |                |
-| attendance  | [ ObjectId ] | Users     | NO       |                |
+| interested  | [ ObjectId ] | Users     | NO       |                |
+| purchased   | [ ObjectId ] | Users     | NO       |                |
 | views       | number       |           | NO       |                |
 | tags        | [ ObjectId ] | Tags      | NO       |                |
-| dateCreated | date         |           | NO       |                |
+| shares      | [ ObjectId ] | Users     | NO       |                |
 
 ## TAGS
 
@@ -95,9 +112,12 @@ An easy, fast and useful demand aggregation platform to match users and organize
 | POST   | '/events/me'                              | YES  | Create an event                       |
 | PUT    | '/events/me/:eventId'                     | YES  | Update event information              |
 | PUT    | '/events/me/:eventId/saved'               | YES  | Increase event saved                  |
-| PUT    | '/events/me/:eventId/attendance'          | YES  | Increase event attendance             |
 | PUT    | '/events/:eventId/views'                  | NO   | Increase event views                  |
 | DELETE | '/events/me/:eventId'                     | YES  | Delete an event                       |
+| GET    | '/events/:eventId/comments'               | NO   | List event comments                   |
+| POST   | '/events/me/:eventId/comments'            | YES  | Add event comment                     |
+| PUT    | '/events/me/:eventId/comments/:commentId' | YES  | Edit event comment                    |
+| DELETE | '/events/me/:eventId/comments/:commentId' | YES  | Delete an event comment               |
 
 ## TAG ENDPOINTS
 
