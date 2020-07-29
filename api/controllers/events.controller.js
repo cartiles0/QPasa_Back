@@ -53,7 +53,10 @@ function addEventsAttendance (req, res) {
 }
 
 function addEventsViews (req, res) {
-  console.log('addEventsViews')
+  EventModel
+    .findByIdAndUpdate(req.params.eventId, { $inc: { views: 1 } }, { new:   true })
+    .then(event => res.json(event))
+    .catch(err => console.error(err))
 }
 
 function deleteEvent (req, res) {

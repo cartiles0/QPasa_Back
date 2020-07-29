@@ -52,7 +52,7 @@ PUT {{base_url}}/events/me/121/attendance HTTP/1.1
 ###
 
 // Add Event Views
-PUT {{base_url}}/events/me/121/views HTTP/1.1
+PUT {{base_url}}/events/me/5f21d2623ed42dbefe2f9b72/views HTTP/1.1
 ###
 
 // Delete Event
