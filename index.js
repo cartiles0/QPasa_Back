@@ -15,10 +15,9 @@ mongoose.connect(process.env.MONGO_URL, {
   useCreateIndex: true,
   useUnifiedTopology: true,
   useFindAndModify: false
-  },
-  err => {
-    if (err) { throw new Error(err) } else { console.info('💾 Connected to Mongo Database \n') }
-  }
+},
+err => {
+  if (err) { throw new Error(err) } else { console.info('💾 Connected to Mongo Database \n') }
 })
 
 const app = express()
