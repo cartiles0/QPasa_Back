@@ -1,7 +1,17 @@
 const EventModel = require('../models/events.model')
 
+function getAllEvents (req, res) {
+  EventModel
+    .find(req.query)
+    .then(events => { res.json(events) })
+    .catch(err => res.json(err))
+}
+
 function getEvent (req, res) {
-  console.log('getEvent')
+  EventModel
+    .findById(req.params.eventId)
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
 }
 
 function getEventsByTag (req, res) {
@@ -13,14 +23,20 @@ function getEventsBySearch (req, res) {
 }
 
 function createEvent (req, res) {
-  console.log('createEvent')
+  EventModel
+    .create(req.body)
+    .then(event => res.json(event))
+    .catch(err => res.json(err))
 }
 
 function updateEvent (req, res) {
-  console.log('updateEvent')
+  EventModel
+    .findByIdAndUpdate(req.params.eventId, req.body, { new: true })
+    .then(event => res.json(event))
+    .catch(err => console.error(err))
 }
 
-function addEventsSaves (req, res) {
+function addEventSaves (req, res) {
   console.log('addEventsSaves')
 }
 
@@ -33,16 +49,20 @@ function addEventsViews (req, res) {
 }
 
 function deleteEvent (req, res) {
-  console.log('deleteEvent')
+  EventModel
+    .findByIdAndDelete(req.params.eventId)
+    .then(event => res.json(event))
+    .catch(err => res.json(err))
 }
 
 module.exports = {
+  getAllEvents,
   getEvent,
   getEventsByTag,
   getEventsBySearch,
   createEvent,
   updateEvent,
-  addEventsSaves,
+  addEventSaves,
   addEventsAttendance,
   addEventsViews,
   deleteEvent

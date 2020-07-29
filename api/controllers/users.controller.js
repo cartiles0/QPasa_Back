@@ -1,15 +1,31 @@
 const UserModel = require('../models/users.model')
 
 function getOwnProfile (req, res) {
-  console.log('getOwnProfile')
+  UserModel
+    .findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
 }
 
 function getUserProfile (req, res) {
-  console.log('getUserProfile')
+  UserModel
+    .findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
+}
+
+function createProfile (req, res) {
+  UserModel
+    .create(req.body)
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
 }
 
 function editOwnProfile (req, res) {
-  console.log('editOwnProfile')
+  UserModel
+    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .then(user => res.json(user))
+    .catch(err => console.error(err))
 }
 
 function editOwnPhoto () {
@@ -17,12 +33,16 @@ function editOwnPhoto () {
 }
 
 function deleteUserAccount (req, res) {
-  console.log('deleteUserAccount')
+  UserModel
+    .findByIdAndDelete(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
 }
 
 module.exports = {
   getOwnProfile,
   getUserProfile,
+  createProfile,
   editOwnProfile,
   editOwnPhoto,
   deleteUserAccount

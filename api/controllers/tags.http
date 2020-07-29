@@ -1,0 +1,6 @@
+@base_url = http://localhost:3000/api
+
+// Get All Tags
+GET {{base_url}}/tags HTTP/1.1
+###
+

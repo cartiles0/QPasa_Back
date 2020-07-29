@@ -1,0 +1,39 @@
+@base_url = http://localhost:3000/api
+
+// Get Own Profile
+GET {{base_url}}/users/me HTTP/1.1
+###
+
+// Get User Profile
+GET {{base_url}}/users/5f21cb5409603ebc07741d55 HTTP/1.1
+###
+
+// Create Profile
+POST {{base_url}}/users/me HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Lito",
+    "username": "lito0",
+    "email": "test@test.com",
+    "password": "123456",
+    "areaPreference": "Las Palmas"
+}
+###
+
+// Edit Own Profile
+PUT {{base_url}}/users/5f21cb5409603ebc07741d55 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Carlitos Way"
+}
+###
+
+// Edit Own Photo
+PUT {{base_url}}/users/me/photo HTTP/1.1
+###
+
+// Delete User Account
+DELETE {{base_url}}/users/5f21cf9855fcd8be31c21d5d HTTP/1.1
+###

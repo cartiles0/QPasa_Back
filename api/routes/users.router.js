@@ -3,6 +3,7 @@ const router = require('express').Router()
 const {
   getOwnProfile,
   getUserProfile,
+  createProfile,
   editOwnProfile,
   editOwnPhoto,
   deleteUserAccount
@@ -11,8 +12,9 @@ const {
 router
   .get('/me', getOwnProfile)
   .get('/:id', getUserProfile)
-  .put('/me', editOwnProfile)
+  .post('/me', createProfile)
+  .put('/:id', editOwnProfile)
   .put('/me/photo', editOwnPhoto)
-  .delete('/me', deleteUserAccount)
+  .delete('/:id', deleteUserAccount)
 
 module.exports = router

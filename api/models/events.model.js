@@ -10,7 +10,7 @@ const eventSchema = new mongoose.Schema({
     required: [true, 'Description is required!']
   },
   eventDate: {
-    type: Date,
+    type: String,
     required: [true, 'Event Date is required!']
   },
   capacity: {

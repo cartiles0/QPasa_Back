@@ -1,0 +1,56 @@
+@base_url = http://localhost:3000/api
+
+// Get All Events
+GET {{base_url}}/events/ HTTP/1.1
+###
+
+// Get Event by ID
+GET {{base_url}}/events/5f21d2623ed42dbefe2f9b72 HTTP/1.1
+###
+
+// Get Event by Tag
+GET {{base_url}}/events/tags/1223 HTTP/1.1
+###
+
+// Get Event by Search
+GET {{base_url}}/events/search/example HTTP/1.1
+###
+
+// Create Event
+POST {{base_url}}/events/me HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "To be deleted",
+    "description": "Surf Competition",
+    "eventDate": "August 21st, 2020",
+    "capacity": 220,
+    "price": 25,
+    "category": "Sports"
+}
+###
+
+// Update Event
+PUT {{base_url}}/events/me/5f21d2623ed42dbefe2f9b72 HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Mega Super Event"
+}
+###
+
+// Add Event Saves
+PUT {{base_url}}/events/me/121/save HTTP/1.1
+###
+
+// Add Event Attendance
+PUT {{base_url}}/events/me/121/attendance HTTP/1.1
+###
+
+// Add Event Views
+PUT {{base_url}}/events/me/121/views HTTP/1.1
+###
+
+// Delete Event
+DELETE {{base_url}}/events/me/5f21d76c2c010ac0d89c0216 HTTP/1.1
+###
