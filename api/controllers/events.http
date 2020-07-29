@@ -12,6 +12,10 @@ GET {{base_url}}/events/5f21d2623ed42dbefe2f9b72 HTTP/1.1
 GET {{base_url}}/events/tags/1223 HTTP/1.1
 ###
 
+// Get Event by Category
+GET {{base_url}}/events/category/Sports HTTP/1.1
+###
+
 // Get Event by Search
 GET {{base_url}}/events/search/example HTTP/1.1
 ###

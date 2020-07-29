@@ -4,6 +4,7 @@ const {
   getAllEvents,
   getEvent,
   getEventsByTag,
+  getEventByCategory,
   getEventsBySearch,
   createEvent,
   updateEvent,
@@ -17,6 +18,7 @@ router
   .get('/', getAllEvents)
   .get('/:eventId', getEvent)
   .get('/tags/:tagId', getEventsByTag)
+  .get('/category/:categoryId', getEventByCategory)
   .get('/search/:term', getEventsBySearch)
   .post('/me', createEvent)
   .put('/me/:eventId', updateEvent)

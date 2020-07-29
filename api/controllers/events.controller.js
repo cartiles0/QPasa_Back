@@ -1,4 +1,5 @@
 const EventModel = require('../models/events.model')
+const { find } = require('../models/events.model')
 
 function getAllEvents (req, res) {
   EventModel
@@ -16,6 +17,13 @@ function getEvent (req, res) {
 
 function getEventsByTag (req, res) {
   console.log('getEventsByTag')
+}
+
+function getEventByCategory (req, res) {
+  EventModel
+    .find({ category: req.params.categoryId })
+    .then(events => res.json(events))
+    .catch(err => console.error(err))
 }
 
 function getEventsBySearch (req, res) {
@@ -59,6 +67,7 @@ module.exports = {
   getAllEvents,
   getEvent,
   getEventsByTag,
+  getEventByCategory,
   getEventsBySearch,
   createEvent,
   updateEvent,
