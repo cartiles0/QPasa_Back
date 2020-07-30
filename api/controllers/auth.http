@@ -1,6 +1,6 @@
 @base_url = http://localhost:3000/api
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTYxMjM1NzcsImV4cCI6MTU5NjEyNzE3N30.LxyKl5rbQmA3ln3fdQLG3Q98RYYbSIs1Ai5GVAVwAps
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTYxMzI4NjIsImV4cCI6MTU5ODcyNDg2Mn0.Vc0xp2xoWXj1WjeSC37Z3X160J2DTaoIgWj8VBivPT4
 
 // Get Own Profile ID
 GET {{base_url}}/auth/me HTTP/1.1

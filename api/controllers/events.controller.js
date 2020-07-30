@@ -29,7 +29,9 @@ function getEventByCategory (req, res) {
 function getEventsBySearch (req, res) {
   EventModel
     .find({ $text: { $search: req.params.term } }, { score: { $meta:  'textScore' } })
-    .then(events => res.json(events))
+    .then(events => {
+      res.json(events)
+    })
     .catch(err => console.error(err))
 }
 
@@ -44,7 +46,6 @@ function createEvent (req, res) {
         .then(user => {
           user.myEvents.push(event._id)
           user.save()
-          console.log(user.myEvents)
         })
         .catch(err => console.error(err))
       res.json(event)
@@ -60,11 +61,63 @@ function updateEvent (req, res) {
 }
 
 function addEventSaves (req, res) {
-  console.log('addEventsSaves')
+  EventModel
+    .findById(req.params.eventId)
+    .then(event => {
+      if (event.saved.includes(res.locals.user._id)) {
+        event.saved.remove(res.locals.user._id)
+        UserModel
+          .findById(res.locals.user._id)
+          .then(user => {
+            user.savedEvents.remove(event._id)
+            user.save()
+          })
+          .catch(err => console.error(err))
+      } else {
+        event.saved.push(res.locals.user._id)
+        UserModel
+          .findById(res.locals.user._id)
+          .then(user => {
+            user.savedEvents.push(event._id)
+            user.save()
+          })
+          .catch(err => console.error(err))
+      }
+      event.save()
+        .then(event => res.json(event))
+        .catch(err => console.error(err))
+    })
+    .catch(err => console.error(err))
 }
 
 function addEventsAttendance (req, res) {
-  console.log('addEventsAttendance')
+  EventModel
+    .findById(req.params.eventId)
+    .then(event => {
+      if (event.attendance.includes(res.locals.user._id)) {
+        event.attendance.remove(res.locals.user._id)
+        UserModel
+          .findById(res.locals.user._id)
+          .then(user => {
+            user.attendingEvents.remove(event._id)
+            user.save()
+          })
+          .catch(err => console.error(err))
+      } else {
+        event.attendance.push(res.locals.user._id)
+        UserModel
+          .findById(res.locals.user._id)
+          .then(user => {
+            user.attendingEvents.push(event._id)
+            user.save()
+          })
+          .catch(err => console.error(err))
+      }
+      event.save()
+        .then(event => res.json(event))
+        .catch(err => console.error(err))
+    })
+    .catch(err => console.error(err))
 }
 
 function addEventsViews (req, res) {

@@ -45,14 +45,14 @@ const eventSchema = new mongoose.Schema({
   address: {
     type: String,
   },
-  saved: {
+  saved: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },
-  attendance: {
+  }],
+  attendance: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user'
-  },
+  }],
   views: {
     type: Number,
     default: 0

@@ -27,7 +27,7 @@ function logIn (req, res) {
       if (!user) { res.json({ error: 'Your email and/or password are incorrect!' }) } else {
         if (bcrypt.compareSync(req.body.user_password, user.password)) {
           const userData = { email: user.email }
-          const token = jwt.sign(userData, process.env.SECRET, { expiresIn: '1h' })
+          const token = jwt.sign(userData, process.env.SECRET, { expiresIn: '30d' })
           res.json({ token, ...userData })
         } else {
           res.json({ error: 'Your email and/or password are incorrect!' })
