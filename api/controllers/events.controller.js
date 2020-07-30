@@ -16,7 +16,11 @@ function getEvent (req, res) {
 }
 
 function getEventsByTag (req, res) {
-  console.log('getEventsByTag')
+  EventModel
+    .find({ tags: req.params.tagId })
+    .populate('tag')
+    .then(events => res.json(events))
+    .catch(err => console.error(err))
 }
 
 function getEventByCategory (req, res) {

@@ -4,7 +4,7 @@ const tagSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
-    required: [true, 'Name is required']
+    required: [true, 'Tag Name is required']
   },
   clicks: {
     type: Number,
