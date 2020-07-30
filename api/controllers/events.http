@@ -19,7 +19,7 @@ GET {{base_url}}/events/category/Sports HTTP/1.1
 ###
 
 // Get Event by Search
-GET {{base_url}}/events/search/Super HTTP/1.1
+GET {{base_url}}/events/search/mega HTTP/1.1
 ###
 
 // Create Event
@@ -62,6 +62,6 @@ PUT {{base_url}}/events/me/5f21d2623ed42dbefe2f9b72/views HTTP/1.1
 ###
 
 // Delete Event
-DELETE {{base_url}}/events/me/5f23139e12368ada55776cec HTTP/1.1
+DELETE {{base_url}}/events/me/5f2329b7d06acfe3fb13d7f1 HTTP/1.1
 token: {{token}}
 ###

@@ -33,9 +33,9 @@ function getEventByCategory (req, res) {
 function getEventsBySearch (req, res) {
   EventModel
     .find({ $text: { $search: req.params.term } }, { score: { $meta:  'textScore' } })
-    .then(events => {
-      res.json(events)
-    })
+    .populate('tags')
+    .populate('creator')
+    .then(events => res.json(events))
     .catch(err => console.error(err))
 }
 
@@ -132,9 +132,19 @@ function addEventsViews (req, res) {
 }
 
 function deleteEvent (req, res) {
+  const eventID = req.params.eventId
   EventModel
     .findByIdAndDelete(req.params.eventId)
-    .then(event => res.json(event))
+    .then(event => {
+      UserModel
+        .findById(res.locals.user._id)
+        .then(user => {
+          user.myEvents.remove(eventID)
+          user.save()
+        })
+        .catch(err => console.error(err))
+      res.json(event)
+    })
     .catch(err => res.json(err))
 }
 
