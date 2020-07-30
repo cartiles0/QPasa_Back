@@ -1,5 +1,7 @@
 @base_url = http://localhost:3000/api
 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTYxMjcyOTgsImV4cCI6MTU5NjEzMDg5OH0.lbi-fjFyvzYQK9JUmxzzDAzRBQoybU0-v9TJxYIWr9Q
+
 // Get All Events
 GET {{base_url}}/events/ HTTP/1.1
 ###
@@ -17,12 +19,13 @@ GET {{base_url}}/events/category/Sports HTTP/1.1
 ###
 
 // Get Event by Search
-GET {{base_url}}/events/search/example HTTP/1.1
+GET {{base_url}}/events/search/Super HTTP/1.1
 ###
 
 // Create Event
 POST {{base_url}}/events/me HTTP/1.1
 Content-Type: application/json
+token: {{token}}
 
 {
     "title": "To be deleted",

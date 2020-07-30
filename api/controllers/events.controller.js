@@ -1,5 +1,5 @@
 const EventModel = require('../models/events.model')
-const { find } = require('../models/events.model')
+const UserModel = require('../models/users.model')
 
 function getAllEvents (req, res) {
   EventModel
@@ -27,13 +27,28 @@ function getEventByCategory (req, res) {
 }
 
 function getEventsBySearch (req, res) {
-  console.log('getEventsBySearch')
+  EventModel
+    .find({ $text: { $search: req.params.term } }, { score: { $meta:  'textScore' } })
+    .then(events => res.json(events))
+    .catch(err => console.error(err))
 }
 
 function createEvent (req, res) {
+  const eventInput = req.body
+  eventInput.creator = res.locals.user._id
   EventModel
-    .create(req.body)
-    .then(event => res.json(event))
+    .create(eventInput)
+    .then(event => {
+      UserModel
+        .findById(eventInput.creator)
+        .then(user => {
+          user.myEvents.push(event._id)
+          user.save()
+          console.log(user.myEvents)
+        })
+        .catch(err => console.error(err))
+      res.json(event)
+    })
     .catch(err => res.json(err))
 }
 

@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     maxlength: [500, 'Max character allowed 500']
   },
-  yourEvents: [{
+  myEvents: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'event'
   }],

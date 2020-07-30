@@ -1,4 +1,5 @@
 const router = require('express').Router()
+const { authUser } = require('../utils')
 
 const {
   getAllEvents,
@@ -20,11 +21,11 @@ router
   .get('/tags/:tagId', getEventsByTag)
   .get('/category/:categoryId', getEventByCategory)
   .get('/search/:term', getEventsBySearch)
-  .post('/me', createEvent)
-  .put('/me/:eventId', updateEvent)
-  .put('/me/:eventId/save', addEventSaves)
-  .put('/me/:eventId/attendance', addEventsAttendance)
-  .put('/me/:eventId/views', addEventsViews)
-  .delete('/me/:eventId', deleteEvent)
+  .post('/me', authUser, createEvent)
+  .put('/me/:eventId', authUser, updateEvent)
+  .put('/me/:eventId/save', authUser, addEventSaves)
+  .put('/me/:eventId/attendance', authUser, addEventsAttendance)
+  .put('/me/:eventId/views', authUser, addEventsViews)
+  .delete('/me/:eventId', authUser, deleteEvent)
 
 module.exports = router
