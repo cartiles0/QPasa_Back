@@ -19,7 +19,7 @@ GET {{base_url}}/events/category/Sports HTTP/1.1
 ###
 
 // Get Event by Search
-GET {{base_url}}/events/search/mega HTTP/1.1
+GET {{base_url}}/events/search/surf HTTP/1.1
 ###
 
 // Create Event

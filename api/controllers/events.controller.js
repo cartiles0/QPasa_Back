@@ -32,7 +32,9 @@ function getEventByCategory (req, res) {
 
 function getEventsBySearch (req, res) {
   EventModel
-    .find({ $text: { $search: req.params.term } }, { score: { $meta:  'textScore' } })
+    .find(
+      { $text: { $search: req.params.term } },
+      { score: { $meta:  'textScore' } })
     .populate('tags')
     .populate('creator')
     .then(events => res.json(events))
