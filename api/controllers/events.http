@@ -7,7 +7,7 @@ GET {{base_url}}/events/ HTTP/1.1
 ###
 
 // Get Event by ID
-GET {{base_url}}/events/5f21d2623ed42dbefe2f9b72 HTTP/1.1
+GET {{base_url}}/events/5f27000fac234a467aa998b5 HTTP/1.1
 ###
 
 // Get Event by Tag
@@ -15,7 +15,7 @@ GET {{base_url}}/events/tags/5f231db288e318bc5d4e7807 HTTP/1.1
 ###
 
 // Get Event by Category
-GET {{base_url}}/events/category/Sports HTTP/1.1
+GET {{base_url}}/events/category/concert HTTP/1.1
 ###
 
 // Get Event by Search

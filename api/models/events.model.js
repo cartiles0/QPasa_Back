@@ -21,6 +21,10 @@ const eventSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Price is required!"],
   },
+  photo: {
+    type: String,
+    required: [true, "Photo is required!"],
+  },
   category: {
     type: String,
     required: [true, "Category is required!"],
