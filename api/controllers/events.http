@@ -1,6 +1,6 @@
 @base_url = http://localhost:3000/api
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTYxMzI4NjIsImV4cCI6MTU5ODcyNDg2Mn0.Vc0xp2xoWXj1WjeSC37Z3X160J2DTaoIgWj8VBivPT4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTY2NTQzMjUsImV4cCI6MTU5OTI0NjMyNX0.tKjOkyo4DhMSiq4XHO3EC8SHnloy9EQgZOXeYP7cv0U
 
 // Get All Events
 GET {{base_url}}/events/ HTTP/1.1
