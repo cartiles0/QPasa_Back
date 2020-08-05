@@ -3,6 +3,8 @@ const UserModel = require("../models/users.model");
 function getOwnProfile(req, res) {
   UserModel.findById(res.locals.user._id)
     .populate("myEvents")
+    .populate("savedEvents")
+    .populate("attendingEvents")
     .then((user) => {
       console.log(user);
       res.json(user);
