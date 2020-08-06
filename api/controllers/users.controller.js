@@ -6,7 +6,6 @@ function getOwnProfile(req, res) {
     .populate("savedEvents")
     .populate("attendingEvents")
     .then((user) => {
-      console.log(user);
       res.json(user);
     })
     .catch((err) => console.error(err));
@@ -14,6 +13,13 @@ function getOwnProfile(req, res) {
 
 function getUserProfile(req, res) {
   UserModel.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => console.error(err));
+}
+
+function getsavedEvents(req, res) {
+  UserModel.findById(res.locals.user._id)
+    .populate("savedEvents")
     .then((user) => res.json(user))
     .catch((err) => console.error(err));
 }
@@ -37,6 +43,7 @@ function deleteUserAccount(req, res) {
 module.exports = {
   getOwnProfile,
   getUserProfile,
+  getsavedEvents,
   editOwnProfile,
   editOwnPhoto,
   deleteUserAccount,

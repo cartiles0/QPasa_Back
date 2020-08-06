@@ -66,7 +66,6 @@ function updateEvent(req, res) {
 function addEventSaves(req, res) {
   EventModel.findById(req.params.eventId)
     .then((event) => {
-      console.log(event);
       if (event.saved.includes(res.locals.user._id)) {
         event.saved.remove(res.locals.user._id);
         UserModel.findById(res.locals.user._id)

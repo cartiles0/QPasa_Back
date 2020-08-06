@@ -15,7 +15,7 @@ GET {{base_url}}/events/tags/5f231db288e318bc5d4e7807 HTTP/1.1
 ###
 
 // Get Event by Category
-GET {{base_url}}/events/category/concert HTTP/1.1
+GET {{base_url}}/events/category/gastronomy HTTP/1.1
 ###
 
 // Get Event by Search
@@ -58,7 +58,7 @@ token: {{token}}
 ###
 
 // Add Event Views
-PUT {{base_url}}/events/me/5f21d2623ed42dbefe2f9b72/views HTTP/1.1
+PUT {{base_url}}/events/5f22faa51205c8d5eaf89969/views HTTP/1.1
 ###
 
 // Delete Event
