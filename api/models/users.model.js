@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
   address: {
     type: String,
   },
+  photo: {
+    type: String,
+    default: "https://picsum.photos/seed/picsum/200/200",
+  },
   rating: {
     type: Number,
     default: 0,
