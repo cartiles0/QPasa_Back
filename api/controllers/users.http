@@ -16,6 +16,11 @@ GET {{base_url}}/users/me/savedEvents HTTP/1.1
 token: {{token}}
 ###
 
+// Get Own Profile Attending Events
+GET {{base_url}}/users/me/attendingEvents HTTP/1.1
+token: {{token}}
+###
+
 // Edit Own Profile
 PUT {{base_url}}/users/me HTTP/1.1
 Content-Type: application/json

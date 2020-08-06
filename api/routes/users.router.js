@@ -4,7 +4,8 @@ const { authUser } = require("../utils");
 const {
   getOwnProfile,
   getUserProfile,
-  getsavedEvents,
+  getSavedEvents,
+  getAttendingEvents,
   editOwnProfile,
   editOwnPhoto,
   deleteUserAccount,
@@ -13,7 +14,8 @@ const {
 router
   .get("/me", authUser, getOwnProfile)
   .get("/:id", getUserProfile)
-  .get("/me/savedEvents", authUser, getsavedEvents)
+  .get("/me/savedEvents", authUser, getSavedEvents)
+  .get("/me/attendingEvents", authUser, getAttendingEvents)
   .put("/me", authUser, editOwnProfile)
   .put("/me/photo", authUser, editOwnPhoto)
   .delete("/me", authUser, deleteUserAccount);

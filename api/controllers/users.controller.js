@@ -17,9 +17,16 @@ function getUserProfile(req, res) {
     .catch((err) => console.error(err));
 }
 
-function getsavedEvents(req, res) {
+function getSavedEvents(req, res) {
   UserModel.findById(res.locals.user._id)
     .populate("savedEvents")
+    .then((user) => res.json(user))
+    .catch((err) => console.error(err));
+}
+
+function getAttendingEvents(req, res) {
+  UserModel.findById(res.locals.user._id)
+    .populate("attendingEvents")
     .then((user) => res.json(user))
     .catch((err) => console.error(err));
 }
@@ -43,7 +50,8 @@ function deleteUserAccount(req, res) {
 module.exports = {
   getOwnProfile,
   getUserProfile,
-  getsavedEvents,
+  getSavedEvents,
+  getAttendingEvents,
   editOwnProfile,
   editOwnPhoto,
   deleteUserAccount,
