@@ -30,8 +30,8 @@ const eventSchema = new mongoose.Schema({
     required: [true, "Category is required!"],
     enum: [
       "Concerts",
-      "Conferences/Workshops",
-      "Expo/Fairs",
+      "Conferences-Workshops",
+      "Expo-Fairs",
       "Festivals",
       "For Kids",
       "Gastronomy",
@@ -39,7 +39,7 @@ const eventSchema = new mongoose.Schema({
       "Retreats",
       "Shows",
       "Sports",
-      "Theater/Film",
+      "Theater-Film",
     ],
   },
   creator: {
