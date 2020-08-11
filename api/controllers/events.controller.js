@@ -157,3 +157,31 @@ module.exports = {
   addEventsViews,
   deleteEvent,
 };
+
+// tagInput
+// .forEach((data, idx) => {
+//   TagModel.find({ name: data })
+//     .then((tag) => {
+//       let isNewtag = true;
+//       tag.forEach((tagName) => {
+//         if (data === tagName.name) {
+//           isNewtag = false;
+//         }
+//       });
+
+//       if (isNewtag === true) {
+//         TagModel.create(data)
+//           .then((response) => {
+//             console.log(response);
+//             eventInput.tags.push(response._id);
+//           })
+//           .catch((err) => res.json(err));
+//       } else {
+//         // console.log(eventInput);
+//         // console.log(tag[0]);
+//         eventInput.tags.push(tag[0]._id);
+//         tag[0].useCount += 1;
+//         tag[0].save();
+//       }
+//     })
+//     .catch((err) => res.json(err));

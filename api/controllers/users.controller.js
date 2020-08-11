@@ -43,6 +43,8 @@ function editOwnPhoto() {
 
 function deleteUserAccount(req, res) {
   UserModel.findByIdAndDelete(res.locals.user._id)
+    .populate("myEvents")
+
     .then((user) => res.json(user))
     .catch((err) => res.json(err));
 }

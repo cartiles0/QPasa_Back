@@ -1,20 +1,20 @@
 @base_url = http://localhost:3000/api
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTYxMzI4NjIsImV4cCI6MTU5ODcyNDg2Mn0.Vc0xp2xoWXj1WjeSC37Z3X160J2DTaoIgWj8VBivPT4
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RpbmdAdGVzdC5jb20iLCJpYXQiOjE1OTcwODQ0OTR9.eyPCUexkGPJTg3TbrJf9nfeReICI4gbSkm81iTqQvGs
 
 // Get Own Profile ID
 GET {{base_url}}/auth/me HTTP/1.1
 token: {{token}}
-
+###
 // Create User
 POST {{base_url}}/auth/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "user_name": "Lito",
-    "user_username": "litos0",
-    "user_email": "Lito@test.com",
-    "user_password": "123456",
+    "user_name": "testing",
+    "user_username": "testing0",
+    "user_email": "testing@test.com",
+    "user_password": "12345678",
     "user_areaPreference": "Las Palmas"
 }
 

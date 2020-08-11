@@ -36,7 +36,8 @@ const userSchema = new mongoose.Schema({
   },
   photo: {
     type: String,
-    default: "https://picsum.photos/seed/picsum/200/200",
+    default:
+      "https://firebasestorage.googleapis.com/v0/b/qpasagc.appspot.com/o/userProfile.png?alt=media&token=f4f73ada-5d3b-48cd-8298-84588ed5f0a6",
   },
   rating: {
     type: Number,

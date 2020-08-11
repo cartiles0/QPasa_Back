@@ -1,6 +1,6 @@
 @base_url = http://localhost:3000/api
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxpdG9AdGVzdC5jb20iLCJpYXQiOjE1OTY2NTQzMjUsImV4cCI6MTU5OTI0NjMyNX0.tKjOkyo4DhMSiq4XHO3EC8SHnloy9EQgZOXeYP7cv0U
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RpbmdAdGVzdC5jb20iLCJpYXQiOjE1OTcwODQ0OTR9.eyPCUexkGPJTg3TbrJf9nfeReICI4gbSkm81iTqQvGs
 
 // Get All Events
 GET {{base_url}}/events/ HTTP/1.1
@@ -30,10 +30,11 @@ token: {{token}}
 {
     "title": "To be deleted!",
     "description": "Surf Competition",
-    "eventDate": "August 21st, 2020",
+    "photo": "https://firebasestorage.googleapis.com/v0/b/qpasagc.appspot.com/o/userProfile.png?alt=media&token=f4f73ada-5d3b-48cd-8298-84588ed5f0a6",
     "capacity": 220,
     "price": 25,
-    "category": "Sports"
+    "category": "Sports",
+    "tag": ["surf", "faef"]
 }
 ###
 
