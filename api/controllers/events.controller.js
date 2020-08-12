@@ -12,14 +12,14 @@ function getAllEvents(req, res) {
 function getEvent(req, res) {
   EventModel.findById(req.params.eventId)
     .populate("creator")
-    .populate("tag")
+    .populate("tags")
     .then((user) => res.json(user))
     .catch((err) => console.error(err));
 }
 
 function getEventsByTag(req, res) {
   EventModel.find({ tags: req.params.tagId })
-    .populate("tag")
+    .populate("tags")
     .then((events) => res.json(events))
     .catch((err) => console.error(err));
 }
