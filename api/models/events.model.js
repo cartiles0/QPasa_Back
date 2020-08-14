@@ -51,6 +51,7 @@ const eventSchema = new mongoose.Schema({
   },
   mapLocation: {
     type: String,
+    default: "",
   },
   saved: [
     {
