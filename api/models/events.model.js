@@ -49,6 +49,9 @@ const eventSchema = new mongoose.Schema({
   address: {
     type: String,
   },
+  mapLocation: {
+    type: String,
+  },
   saved: [
     {
       type: mongoose.Schema.Types.ObjectId,

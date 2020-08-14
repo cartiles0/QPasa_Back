@@ -11,7 +11,7 @@ Content-Type: application/json
 token: {{token}}
 
 {
-    "name": "otro",
+    "name": "otro22",
     "eventId": "5f22faa51205c8d5eaf89969"
 }
 

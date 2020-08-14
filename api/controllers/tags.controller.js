@@ -10,7 +10,7 @@ function getAllTags(req, res) {
     .catch((err) => res.json(err));
 }
 
-function createTag(req, res) {
+function addTag(req, res) {
   const tagInput = req.body;
   TagModel.find({ name: tagInput.name })
     .then((tag) => {
@@ -41,40 +41,19 @@ function createTag(req, res) {
 
 module.exports = {
   getAllTags,
-  createTag,
+  addTag,
 };
 
-// function createTag(req, res) {
+// function addTag(req, res) {
 //   const tagInput = req.body;
-//   const userId = res.locals.user._id;
-//   TagModel.find({ name: tagInput.name })
+//   TagModel.findOneAndUpdate({ name: tagInput.name }, {}, { upsert: true })
 //     .then((tag) => {
-//       if (tag.length === 0) {
-//         TagModel.create(tagInput)
-//           .then((tagCreate) => {
-//             const tagId = tagCreate._id;
-//             UserModel.findById(userId)
-//               .populate("myEvents")
-//               .then((user) => {
-//                 user.myEvents.forEach((event) => {
-//                   if (
-//                     JSON.stringify(event._id) ===
-//                     JSON.stringify(tagInput.eventId)
-//                   ) {
-//                     event.tags.push(tagId);
-//                     console.log(event.tags);
-//                   }
-//                 });
-//                 user.save();
-//               });
-//             res.json(response);
-//           })
-//           .catch((err) => res.json(err));
-//       } else {
-//         tag[0].useCount += 1;
-//         tag[0].save();
-//         res.json(tag);
-//       }
+//       EventModel.findById(tagInput.eventId)
+//         .then((event) => {
+//           event.tags.push(tagId);
+//           event.save();
+//         })
+//         .catch((err) => res.json(err));
 //     })
 //     .catch((err) => res.json(err));
 // }
